@@ -22,12 +22,12 @@
     background: #4393B9;
 }
 
-.footer {
-    text-align: center;
-    padding: 30px 0;
-    margin-top: 70px;
-    border-top: 1px solid #E5E5E5;
-}
+    .footer {
+        text-align: center;
+        padding: 30px 0;
+        margin-top: 70px;
+        border-top: 1px solid #E5E5E5;
+    }
 
 .toolbardemoScrollShrink .face {
   width: 48px;
@@ -35,3 +35,41 @@
   border-radius: 48px;
   border: 1px solid #ddd;
 }
+
+#md-button {
+  background-color: #E7CAB1;
+  color: #E7CAB1;
+}
+
+.cell {
+  background-color: #E7CAB1;
+  color: #E7CAB1;
+  border: none;
+}
+
+c {
+  background-color: #E7CAB1;
+  color: #E7CAB1;
+  border: none;
+}
+
+
+h1 {
+    font-size: 60px;
+    font-weight: bold;
+    color: #FFFFFF;
+}
+
+
+
+label {
+    font-size: 1px;
+    font-weight: bold;
+    color: #FFFFFF;
+}
+
+div {
+  background-color: #E7CAB1;
+}
+
+

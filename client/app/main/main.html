@@ -30,12 +30,13 @@
 <div ng-app="rachaApp" ng-controller="MainCtrl">
   <div layout="row" layout-align="center center">
     <md-content layout-padding flex="33" flex-sm="100">
+      <div>
       <br>
-      <section layout="column" layout-align="center center" flex>
+      <section class="cell" layout="column" layout-align="center center" flex>
         <h1>Racha</h1>
       </section>
       <br>
-      <section flex>
+      <section class="cell" flex>
         <md-input-container>
           <!-- Use floating label instead of placeholder -->
           <label>Name</label>
@@ -48,10 +49,11 @@
         </md-input-container>
       </section>
 
-      <section layout="row" layout-sm="row" layout-align="center center">
+      <section class="cell" layout="row" layout-sm="row" layout-align="center center">
         <md-button class="md-raised md-primary">Sign up</md-button>
         <md-button class="md-raised md-primary" ng-click="go('\current')">Login</md-button>
       </section>
+      </div>
     </md-content>
   </div>
 </div>
