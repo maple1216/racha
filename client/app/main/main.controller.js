@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('rachaApp')
-  .controller('MainCtrl', function ($scope, $http, socket, $location) {
+  .controller('MainCtrl', function ($scope, $http, socket, $location, $mdDialog) {
     $scope.awesomeThings = [];
 
     $http.get('/api/things').success(function(awesomeThings) {
@@ -29,19 +29,29 @@ angular.module('rachaApp')
       $location.path( path );
     };
 
-    // var item = {
-    //   face: '/img/list/60.jpeg',
-    //   what: 'Brunch this weekend?',
-    //   who: 'Min Li Chan',
-    //   notes: "I'll be in your neighborhood doing errands."
-    // };
-    // $scope.todos = [];
-    // for (var i = 0; i < 15; i++) {
-    //   $scope.todos.push({
-    //     face: '/img/list/60.jpeg',
-    //     what: "Brunch this weekend?",
-    //     who: "Min Li Chan",
-    //     notes: "I'll be in your neighborhood doing errands."
-    //   });
-    // }
+    $scope.alert = '';
+    $scope.showAdvanced = function(ev) {
+      $mdDialog.show({
+        controller: DialogController,
+        templateUrl: 'dialog1.tmpl.html',
+        targetEvent: ev,
+      })
+      .then(function(answer) {
+        $scope.alert = 'You said the information was "' + answer + '".';
+      }, function() {
+        $scope.alert = 'You cancelled the dialog.';
+      });
+    };
   });
+
+  function DialogController($scope, $mdDialog) {
+    $scope.hide = function() {
+      $mdDialog.hide();
+    };
+    $scope.cancel = function() {
+      $mdDialog.cancel();
+    };
+    $scope.answer = function(answer) {
+      $mdDialog.hide(answer);
+    };
+  }
