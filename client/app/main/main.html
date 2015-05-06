@@ -1,4 +1,4 @@
-<div ng-include="'components/navbar/navbar.html'"></div>
+<!-- <div ng-include="'components/navbar/navbar.html'"></div> -->
 <!--
 <div ng-controller="MainCtrl" layout="column">
   <md-toolbar md-scroll-shrink>
@@ -25,3 +25,33 @@
     </md-sidenav>
   </section>
 </div> -->
+
+
+<div ng-app="rachaApp" ng-controller="CurrentCtrl">
+  <div layout="row" layout-align="center center">
+    <md-content layout-padding flex="33" flex-sm="100">
+      <br>
+      <section layout="column" layout-align="center center" flex>
+        <h1>Racha</h1>
+      </section>
+      <br>
+      <section flex>
+        <md-input-container>
+          <!-- Use floating label instead of placeholder -->
+          <label>Name</label>
+          <input ng-model="user.name" type="text">
+        </md-input-container>
+        <md-input-container>
+          <!-- Use floating label instead of placeholder -->
+          <label>Email</label>
+          <input ng-model="user.email" type="email">
+        </md-input-container>
+      </section>
+
+      <section layout="row" layout-sm="row" layout-align="center center">
+        <md-button class="md-raised md-primary">Sign up</md-button>
+        <md-button class="md-raised md-primary" ng-click="go('\current')">Login</md-button>
+      </section>
+    </md-content>
+  </div>
+</div>

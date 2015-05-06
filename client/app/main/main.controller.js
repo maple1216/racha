@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('rachaApp')
-  .controller('MainCtrl', function ($scope, $http, socket) {
+  .controller('MainCtrl', function ($scope, $http, socket, $location) {
     $scope.awesomeThings = [];
 
     $http.get('/api/things').success(function(awesomeThings) {
@@ -24,6 +24,10 @@ angular.module('rachaApp')
     $scope.$on('$destroy', function () {
       socket.unsyncUpdates('thing');
     });
+
+    $scope.go = function ( path ) {
+      $location.path( path );
+    };
 
     // var item = {
     //   face: '/img/list/60.jpeg',
