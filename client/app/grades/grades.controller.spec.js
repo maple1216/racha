@@ -1,21 +1,43 @@
 'use strict';
 
-describe('Controller: GradesCtrl', function () {
+angular.module('rachaApp')
+  .controller('GradesCtrl', function ($scope, $http, socket) {
+    $scope.awesomeThings = [];
 
-  // load the controller's module
-  beforeEach(module('rachaApp'));
-
-  var GradesCtrl, scope;
-
-  // Initialize the controller and a mock scope
-  beforeEach(inject(function ($controller, $rootScope) {
-    scope = $rootScope.$new();
-    GradesCtrl = $controller('GradesCtrl', {
-      $scope: scope
+    $http.get('/api/things').success(function(awesomeThings) {
+      $scope.awesomeThings = awesomeThings;
+      socket.syncUpdates('thing', $scope.awesomeThings);
     });
-  }));
 
-  it('should ...', function () {
-    expect(1).toEqual(1);
+    $scope.addThing = function() {
+      if($scope.newThing === '') {
+        return;
+      }
+      $http.post('/api/things', { name: $scope.newThing });
+      $scope.newThing = '';
+    };
+
+    $scope.deleteThing = function(thing) {
+      $http.delete('/api/things/' + thing._id);
+    };
+
+    $scope.$on('$destroy', function () {
+      socket.unsyncUpdates('thing');
+    });
+
+    var item = {
+      face: '/img/list/60.jpeg',
+      what: 'Brunch this weekend?',
+      who: 'Min Li Chan',
+      notes: "I'll be in your neighborhood doing errands."
+    };
+    $scope.todos = [];
+    for (var i = 0; i < 15; i++) {
+      $scope.todos.push({
+        face: '/img/list/60.jpeg',
+        what: "Brunch this weekend?",
+        who: "Min Li Chan",
+        notes: "I'll be in your neighborhood doing errands."
+      });
+    }
   });
-});
